@@ -14,11 +14,12 @@ from simulator import Simulator
 # This is the main function that starts up the simulation
 def main ():
     
-    # Creates the ecosystem and simulator
+    # Creates the ecosystem 
     ecosystem = Ecosystem()
-    simulator = Simulator()
+    ecosystem.create(10)
 
     # Attaches the ecosystem and begins simulation
+    simulator = Simulator()
     simulator.attach(ecosystem)
     simulator.execute()
 

@@ -16,6 +16,11 @@ class Simulator:
     # The list of all ecosystems that can be simulated
     ecosystems: list = []
 
+    # The current time
+    time: float = 0.0
+    step: float = 1.0
+    max_time: float = 10.0
+
     # The default constructor for setting up an simulator
     def __init__(self) -> None:
         pass
@@ -29,3 +34,20 @@ class Simulator:
     # Executes the simulation and starts running the simulation
     def execute (self) -> None:
         print("Beginning simulation...")
+
+        # Define the update loop
+        while self.time < self.max_time:
+            
+            # Increase the time
+            self.time += self.step
+
+            # Update the simulation
+            self.update(self.time, self.step)
+
+    
+    # Updates the simulation at some time
+    def update (self, time: float, step: float) -> None:
+
+        # Loops through each ecosystem
+        for eco in self.ecosystems:
+            eco.update(time, step)
